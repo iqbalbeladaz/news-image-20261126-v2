@@ -1,0 +1,11 @@
+// Entry point for the News Image 26 November 2026 bounty.
+// The image is rendered by generate.py and shipped as entry.png;
+// this program copies it to the grader's output directory.
+import { copyFileSync, mkdirSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+mkdirSync(outDir, { recursive: true });
+copyFileSync(join(here, "entry.png"), join(outDir, "entry.png"));
